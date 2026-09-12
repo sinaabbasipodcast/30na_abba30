@@ -3,7 +3,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const data=window.poems||[];
 const initial=12; let shown=Math.min(initial,data.length); let current=0, verseIndex=0;
 const selected=[
- ["ای ماهیِ بیچاره که خوشحالی و سرمست\nآنچه بغلت کرده به تنگی، نخِ تور است",11],
+ ["ای ماهیِ بیچاره که خوشحالی و سرمست\nآنچه بغلت کرده به تنگی، نخِ تور است",17],
  ["خودت بهتر خبر داری که با قلبم چه‌ها کردی\nتو هرشب ذرّه‌ای از سینه‌ی من را جدا کردی",3],
  ["مهمان دلم شو که ببینی پرِ خون است!\nبعد از تو تمام غزل‌م وصف جنون است!",2],
  ["دچار شرم واژه‌ام و اهل عشق بی‌صدا\nکم از سکوت عاشقانه‌ی دلم چشیده‌ای؟",1],
@@ -33,13 +33,11 @@ let phase=0;function windowCycle(){phase=(phase+1)%4;const labels=['باران',
 let lamp=0;$('#ambient').addEventListener('click',()=>{});const lampEl=document.createElement('button');lampEl.className='floatingLamp';lampEl.setAttribute('aria-label','چراغ');lampEl.innerHTML='✦';document.body.appendChild(lampEl);lampEl.onclick=()=>{lamp=1-lamp;document.body.classList.toggle('bright',!!lamp)};
 $('#searchBtn').onclick=()=>{$('#searchPanel').classList.add('open');$('#searchInput').focus()};$('#closeSearch').onclick=()=>$('#searchPanel').classList.remove('open');
 $('#searchInput').addEventListener('input',e=>{const q=e.target.value.trim();const box=$('#searchResults');box.innerHTML='';if(!q)return;data.forEach((p,i)=>{if((p.title+' '+(p.full||'')).includes(q)){const r=document.createElement('div');r.className='result';r.textContent=p.title;r.onclick=()=>{$('#searchPanel').classList.remove('open');openReader(i)};box.appendChild(r)}})});
-// lightweight original ambient music using Web Audio; browser may block autoplay until interaction.
 let audio=null,gain=null,playing=false,muted=false,track=0,timer=null;const tracks=['شبِ کتابخانه · بی‌کلام I','شبِ کتابخانه · بی‌کلام II','شبِ کتابخانه · بی‌کلام III'];
 function audioStart(){if(!audio){audio=new (window.AudioContext||window.webkitAudioContext)();gain=audio.createGain();gain.gain.value=.48;gain.connect(audio.destination)} if(audio.state==='suspended')audio.resume();if(playing)return;playing=true;$('#playTrack').textContent='Ⅱ';$('.record').style.animationPlayState='running';playPattern();}
 function playPattern(){if(timer)clearInterval(timer);const notes=[[196,246.94,293.66],[174.61,220,261.63],[146.83,196,246.94]][track];let t=audio.currentTime+.03;for(let i=0;i<32;i++){const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=notes[i%3];g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.055,t+.04);g.gain.exponentialRampToValueAtTime(.0001,t+2.4);o.connect(g);g.connect(gain);o.start(t);o.stop(t+2.45);t+=2.5}timer=setTimeout(()=>{track=(track+1)%tracks.length;$('#trackName').textContent=tracks[track];if(playing)playPattern()},80000)}
 function stopAudio(){playing=false;if(timer)clearTimeout(timer);$('.record').style.animationPlayState='paused';$('#playTrack').textContent='▶'}
 $('#playTrack').onclick=()=>playing?stopAudio():audioStart();$('#nextTrack').onclick=()=>{track=(track+1)%tracks.length;$('#trackName').textContent=tracks[track];if(playing)playPattern();else audioStart()};$('#prevTrack').onclick=()=>{track=(track-1+tracks.length)%tracks.length;$('#trackName').textContent=tracks[track];if(playing)playPattern();else audioStart()};$('#muteTrack').onclick=()=>{muted=!muted;if(gain)gain.gain.value=muted?0:Number($('#volume').value);$('#muteTrack').textContent=muted?'○':'◖'};$('#volume').oninput=e=>{if(gain&&!muted)gain.gain.value=Number(e.target.value)};
-// attempt autoplay; browsers can reject it, then the first click starts it.
 window.addEventListener('load',()=>{setTimeout(()=>{try{audioStart()}catch(e){}},700)});['pointerdown','keydown'].forEach(ev=>addEventListener(ev,()=>{if(!playing)try{audioStart()}catch(e){}},{once:true}));
 $('#readingDemo').onclick=()=>{try{audioStart();document.querySelector('#reading').scrollIntoView({behavior:'smooth'})}catch(e){}};
 })();
