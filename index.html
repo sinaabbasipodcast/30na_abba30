@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d0907">
+  <meta name="description" content="سکوت پرهیاهو — غزلیات و نوشته‌های سیناعباسی">
+  <title>سکوت پرهیاهو | غزلیات و نوشته‌های سیناعباسی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cursorGlow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home"><span>سکوت</span> پرهیاهو</a>
+    <nav>
+      <a href="#archive">فهرست اشعار</a>
+      <a href="#selected">شاه‌بیت‌ها</a>
+      <a href="#night">زخم شبانه</a>
+      <a href="#sound">اتاق صدا</a>
+    </nav>
+    <button class="search-btn" id="searchBtn" aria-label="جست‌وجوی شعر">⌕</button>
+  </header>
+
+  <main>
+    <section class="hero reveal" id="home">
+      <div class="hero-photo" role="img" aria-label="سیناعباسی در فضای کتابخانه»"></div>
+      <div class="hero-vignette"></div>
+      <div class="hero-copy">
+        <div class="eyebrow">اشعار و نوشته‌های سیناعباسی</div>
+        <h1><span>سکوت</span> پرهیاهو</h1>
+        <p class="hero-subtitle">غزلیات و نوشته‌های سیناعباسی</p>
+        <div class="hero-line"></div>
+        <div class="featured-card depth-card">
+          <span class="tiny-label">غزلِ آغاز</span>
+          <h2>مهمان دلم باش، دلم جای بدی نیست</h2>
+          <p>این خانه به غیر از تو سرای احدی نیست</p>
+          <button class="gold-link" data-poem="1">خواندن غزل ←</button>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#archive">ورود به فهرست ↓</a>
+    </section>
+
+    <section class="section archive reveal" id="archive">
+      <div class="section-head">
+        <div><span class="kicker">ARCHIVE / 01</span><h2>فهرست اشعار</h2></div>
+        <span class="count">۲۲ غزل</span>
+      </div>
+      <div class="archive-wrap">
+        <div class="thread thread-a"></div><div class="thread thread-b"></div>
+        <div class="poem-grid" id="poemGrid"></div>
+      </div>
+      <div class="more-fade" id="moreFade"></div>
+      <button class="more-btn" id="moreBtn">مشاهده بیشتر <span>↓</span></button>
+    </section>
+
+    <section class="section selected reveal" id="selected">
+      <div class="section-head selected-head">
+        <div><span class="kicker">CURATED / 02</span><h2>شاه‌بیت‌ها</h2></div>
+        <span class="selected-note">هر ده ثانیه، یک بیت</span>
+      </div>
+      <div class="quote-frame" id="quoteFrame">
+        <div class="frame-ornament top-left">✦</div><div class="frame-ornament top-right">✦</div>
+        <div class="quote-inner">
+          <span class="quote-mark">«</span>
+          <div class="quote-lines" id="quoteLines"></div>
+          <span class="quote-mark close">»</span>
+          <div class="quote-meta" id="quoteMeta">۱ / ۸</div>
+        </div>
+        <button class="quote-next" id="quoteNext" aria-label="شاه‌بیت بعدی">↺</button>
+      </div>
+      <div class="quote-dots" id="quoteDots"></div>
+    </section>
+
+    <section class="section night reveal" id="night">
+      <div class="night-copy">
+        <span class="kicker">NIGHT NOTES / 03</span>
+        <h2>زخم شبانه</h2>
+        <p>جایی میان نیمه‌شب، کاغذ و چای؛ یادداشت‌هایی برای ساعت‌هایی که شهر خوابیده است.</p>
+        <div class="night-note"><span>☾</span><p>«بعضی شب‌ها، آدم فقط به یک صفحه‌ی خالی احتیاج دارد.»</p></div>
+      </div>
+      <div class="window-scene depth-card" aria-label="پنجره‌ای در شب">
+        <div class="moon"></div><div class="window-frame"><i></i><i></i><i></i><i></i></div>
+        <div class="city"></div><div class="window-curtain left"></div><div class="window-curtain right"></div>
+      </div>
+    </section>
+
+    <section class="section sound reveal" id="sound">
+      <div class="section-head"><div><span class="kicker">LISTENING ROOM / 04</span><h2>اتاق صدا</h2></div><span class="sound-status" id="soundStatus">آماده‌ی پخش</span></div>
+      <div class="sound-room">
+        <div class="desk">
+          <div class="lamp">
+            <div class="lamp-shade"></div><div class="lamp-neck"></div><div class="lamp-base"></div><div class="lamp-light"></div>
+          </div>
+          <div class="cup"><div class="tea"></div><div class="cup-handle"></div></div>
+          <div class="books-stack"><b></b><b></b><b></b></div>
+        </div>
+        <div class="gramophone depth-object">
+          <div class="record"></div><div class="turntable"></div><div class="horn"></div><div class="arm"></div><div class="needle"></div>
+        </div>
+        <div class="player-panel">
+          <div class="track-label"><span>NOW PLAYING</span><strong id="trackName">کتابخانه‌ی نیمه‌شب</strong></div>
+          <div class="player-controls"><button id="prevTrack">‹</button><button class="play" id="playBtn">▶</button><button id="nextTrack">›</button></div>
+          <div class="volume-row"><span>صدا</span><input id="volume" type="range" min="0" max="1" step="0.01" value="0.58"></div>
+          <audio id="audio" preload="auto"></audio>
+          <div class="audio-hint" id="audioHint">اگر مرورگر پخش خودکار را بست، یک‌بار روی دکمهٔ پخش بزن.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section social reveal" id="social">
+      <div class="social-panel depth-card">
+        <div><span class="kicker">SOCIAL / 05</span><h2>سکوت پرهیاهو بیرون از این کتابخانه</h2></div>
+        <div class="social-links">
+          <a href="https://instagram.com/30na_abba30" target="_blank" rel="noopener" class="social-link"><span>◎</span> اینستاگرام <small>@30na_abba30</small></a>
+          <a href="#" class="social-link disabled" aria-disabled="true"><span>✈</span> تلگرام <small>لینک را بعداً اضافه کنید</small></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>✍🏻 سیناعباسی</span><span>سکوت پرهیاهو · Silence in Chaos</span></footer>
+
+  <div class="book-modal" id="bookModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <article class="book" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+      <button class="close-book" id="closeBook" aria-label="بستن">×</button>
+      <div class="book-page book-cover"><span>سکوت<br>پر هیاهو</span><small>سیناعباسی</small></div>
+      <div class="book-page book-content">
+        <div class="book-tools"><button id="copyPoem">کپی شعر</button><button id="sharePoem">اشتراک‌گذاری</button><span id="copyStatus"></span></div>
+        <span class="kicker">POEM / <span id="bookNumber"></span></span>
+        <h2 id="bookTitle"></h2>
+        <div class="poem-text" id="bookText"></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true"><div class="modal-backdrop" data-search-close="1"></div><div class="search-box"><button id="closeSearch">×</button><input id="searchInput" placeholder="نام یا بخشی از شعر را جست‌وجو کنید…"><div id="searchResults"></div></div></div>
+
+  <script src="poems.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
