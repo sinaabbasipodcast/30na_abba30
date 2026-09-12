@@ -16,7 +16,7 @@ function makeCards(){
     card.addEventListener('click',()=>openPoem(i));
     card.addEventListener('pointermove',e=>{
       const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`perspective(800px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateY(-4px)`;
+      card.style.transform=`perspective(900px) rotateX(${(-y*7).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg) rotateZ(${(x*1.8).toFixed(2)}deg) translateY(-12px) scale(1.025)`;
     });
     card.addEventListener('pointerleave',()=>card.style.transform='');
     grid.appendChild(card);
