@@ -1,635 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سکوت پرهیاهو | غزلیات و مطلوبات سینا عباسی</title>
-    <!-- فونت وزیرمتن -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <!-- فونت نستعلیق برای ابیات -->
-    <link href="https://cdn.jsdelivr.net/gh/fontiran/font-eitaa@v1.0.0/fontiran.css" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #12100e;
-            --card-bg: #f4ebd0;
-            --card-text: #2c221e;
-            --gold: #d4af37;
-            --gold-light: #f3e5ab;
-            --dark-brown: #1f1712;
-            --paper-texture: #eae1c0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--gold-light);
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* هاله نور ملایم دور موس */
-        .cursor-light {
-            position: fixed;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            transition: width 0.2s, height 0.2s;
-        }
-
-        /* گرامافون شناور گوشه صفحه */
-        .gramophone-widget {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(31, 23, 18, 0.9);
-            border: 2px solid var(--gold);
-            border-radius: 50px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .gramophone-widget:hover {
-            transform: scale(1.05);
-        }
-        .gramophone-icon {
-            font-size: 22px;
-            animation: spin 4s linear infinite paused;
-        }
-        .gramophone-widget.playing .gramophone-icon {
-            animation-play-state: running;
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-        .gramophone-text {
-            font-size: 13px;
-            color: var(--gold-light);
-        }
-
-        /* قلم پر تعاملی */
-        .magic-feather {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(31, 23, 18, 0.8);
-            border: 1px solid var(--gold);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 13px;
-            color: var(--gold);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        /* بنر تمام صفحه اول */
-        .hero-banner {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: url('sina-banner.jpg') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-right: 8%;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to left, rgba(18,16,14,0.9) 0%, rgba(18,16,14,0.4) 60%, rgba(18,16,14,0.2) 100%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-            text-align: right;
-            padding: 20px;
-        }
-        .hero-content h1 {
-            font-size: 4rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.8);
-            font-weight: 800;
-        }
-        .hero-content p {
-            font-size: 1.5rem;
-            color: var(--card-bg);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-        }
-
-        /* بخش جستجو و ابزارها */
-        .search-section {
-            max-width: 800px;
-            margin: -30px auto 40px auto;
-            position: relative;
-            z-index: 10;
-            padding: 0 20px;
-        }
-        .search-bar {
-            width: 100%;
-            padding: 15px 25px;
-            background: rgba(31, 23, 18, 0.95);
-            border: 2px solid var(--gold);
-            border-radius: 50px;
-            color: var(--gold-light);
-            font-size: 1.1rem;
-            outline: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: right;
-        }
-
-        /* اسلایدشو ابیات منتخب */
-        .featured-verses-section {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(31, 23, 18, 0.6);
-            border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 15px;
-            text-align: center;
-            position: relative;
-        }
-        .featured-title {
-            color: var(--gold);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--gold);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        .verse-slide {
-            font-size: 1.6rem;
-            line-height: 2.2;
-            color: var(--card-bg);
-            min-height: 120px;
-            transition: opacity 0.5s ease;
-            white-space: pre-line;
-        }
-        .verse-controls {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .verse-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 5px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .verse-btn:hover {
-            background: var(--gold);
-            color: var(--dark-brown);
-        }
-
-        /* فهرست اشعار (کارت‌های کاغذی) */
-        .poems-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        .poem-card {
-            background: var(--card-bg);
-            color: var(--card-text);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #dcd3b2;
-        }
-        .poem-card::before {
-            content: '📌';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 18px;
-        }
-        .poem-card:hover {
-            transform: translateY(-8px) rotate(1deg);
-            box-shadow: 0 15px 35px rgba(212,175,55,0.3);
-        }
-        .poem-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #1a1412;
-            border-bottom: 1px dashed #b5a47c;
-            padding-bottom: 8px;
-        }
-        .poem-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            white-space: pre-line;
-        }
-
-        /* دکمه نمایش بیشتر */
-        .load-more-container {
-            text-align: center;
-            margin: 40px 0 80px 0;
-        }
-        .load-more-btn {
-            background: var(--gold);
-            color: var(--dark-brown);
-            border: none;
-            padding: 12px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(212,175,55,0.4);
-            transition: 0.3s;
-        }
-        .load-more-btn:hover {
-            background: var(--gold-light);
-            transform: scale(1.05);
-        }
-
-        /* مودال کتاب قدیمی (نمایش کامل شعر) */
-        .book-modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s;
-        }
-        .book-modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .book-content {
-            background: var(--paper-texture);
-            color: var(--card-text);
-            width: 90%;
-            max-width: 700px;
-            max-height: 85vh;
-            padding: 50px;
-            border-radius: 5px;
-            box-shadow: 0 0 50px rgba(212,175,55,0.5);
-            overflow-y: auto;
-            position: relative;
-            border: 10px solid #2c221e;
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .book-modal.active .book-content {
-            transform: scale(1);
-        }
-        .book-close {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #5c4738;
-            font-weight: bold;
-        }
-        .book-poem-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #1f1712;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 10px;
-        }
-        .book-poem-body {
-            font-size: 1.3rem;
-            line-height: 2.3;
-            text-align: center;
-            white-space: pre-line;
-            margin-bottom: 30px;
-        }
-        .book-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            border-top: 1px dashed #b5a47c;
-            padding-top: 20px;
-        }
-        .action-btn {
-            background: #2c221e;
-            color: var(--gold);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-        .action-btn:hover {
-            background: var(--gold);
-            color: var(--dark-brown);
-        }
-
-        /* رسپانسیو */
-        @media(max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.1rem; }
-            .hero-banner { justify-content: center; text-align: center; padding: 0 20px; }
-            .book-content { padding: 25px; }
-        }
-    </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>سکوت پرهیاهو — اشعار سیناعباسی</title>
+<meta name="description" content="سکوت پرهیاهو؛ شعرها، ابیات منتخب و خوانش‌های سیناعباسی.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- هاله نور دور موس -->
-    <div class="cursor-light" id="cursorLight"></div>
-
-    <!-- گرامافون (موزیک پلیر) -->
-    <div class="gramophone-widget" id="gramophoneWidget" onclick="toggleAudio()">
-        <div class="gramophone-icon">📯</div>
-        <div class="gramophone-text" id="audioStatus">نوای گرامافون</div>
-        <audio id="bgAudio" loop src="https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg"></audio>
+<div class="grain"></div><div id="cursorLight"></div><div id="ambient"></div>
+<header class="topbar">
+  <div class="brand"><b>سکوت</b> <span>پرهیاهو</span></div>
+  <nav><a href="#poems">غزل‌ها</a><a href="#verses">بهترین ابیات</a><a href="#reading">گوشه‌ی خوانش</a><a href="#sound">زخم شبانه</a></nav>
+  <button id="searchBtn" class="iconBtn" aria-label="جست‌وجو">⌕</button>
+</header>
+<main>
+<section class="hero">
+  <img src="assets/hero.jpg" alt="سینا عباسی" class="heroImg">
+  <div class="heroShade"></div>
+  <div class="heroText reveal">
+    <div class="eyebrow">مکتوبات و غزلیات سیناعباسی</div>
+    <h1><span>سکوت</span> <em>پرهیاهو</em></h1>
+    <div class="heroQuote">مهمان دلم باش.</div>
+    <p>دلم جای بدی نیست.</p>
+    <div class="socials">
+      <a href="https://instagram.com/30na_abba30" target="_blank" aria-label="Instagram">◎</a>
+      <a href="https://t.me/Silence_in_chaos" target="_blank" aria-label="Telegram">➤</a>
+      <a href="https://ble.ir/Silence_in_chaos" target="_blank" aria-label="Bale">ب</a>
     </div>
+  </div>
+  <div class="heroDate"><span id="heroTime">—</span><span id="heroDate">—</span></div>
+  <a class="scrollCue" href="#poems">↓</a>
+</section>
 
-    <!-- قلم پر تعاملی -->
-    <div class="magic-feather">
-        <span>✍️ قطره جوهر خیال سینا</span>
+<section id="poems" class="poemArchive section">
+  <div class="sectionHead reveal"><div><span class="eyebrow">ARCHIVE / 01</span><h2>غزل‌ها</h2></div><span class="sectionMark">دفتر شعر</span></div>
+  <div id="poemGrid" class="poemGrid"></div>
+  <button id="morePoems" class="moreBtn">مشاهده‌ی بیشتر <span>↓</span></button>
+</section>
+
+<section id="verses" class="selectedSection section">
+  <div class="sectionHead reveal"><div><span class="eyebrow">ARCHIVE / 02</span><h2>ابیات منتخب</h2></div></div>
+  <div class="verseStage reveal">
+    <button id="prevVerse" class="paperNav prev" aria-label="بیت قبلی">‹</button>
+    <article id="versePaper" class="versePaper">
+      <div class="paperCorner">سکوت پرهیاهو</div><div class="paperRule"></div>
+      <blockquote id="verseText"></blockquote>
+      <div class="paperMeta"><span id="verseMeta">غزل ۱</span><button id="verseOpen">خواندن غزل ↗</button></div>
+    </article>
+    <button id="nextVerse" class="paperNav next" aria-label="بیت بعدی">›</button>
+  </div>
+</section>
+
+<section class="windowSection section">
+  <div class="windowScene reveal">
+    <div class="windowFrame"><div class="rain" id="rain"></div><div class="windowGlow"></div><div class="outside"><span class="moon"></span><span class="sun"></span><span class="city"></span></div></div>
+    <div class="windowCaption"><span>حاشیه‌ی پنجره</span><b id="weatherText">باران</b></div>
+  </div>
+  <div class="noteBoard reveal"><span>از حاشیه‌های این اتاق</span><p id="thought">بنویسید بچه‌ها! کم‌رنگ‌ترین جوهرها از قوی‌ترین حافظه‌ها ماندگارترند.</p></div>
+</section>
+
+<section id="sound" class="soundSection section">
+  <div class="soundCopy reveal"><span class="eyebrow">ARCHIVE / 03</span><h2>زخم شبانه</h2><p>اتاق را آرام‌تر کن.</p></div>
+  <div class="gramophoneWrap reveal">
+    <div class="gramophone" id="gramophone"><div class="horn"></div><div class="base"></div><div class="turntable"><div class="record"><span>زخم<br>شبانه</span></div></div><div class="needle"></div><div class="knob"></div>
+      <div class="playerControls"><button id="prevTrack">‹</button><button id="playTrack" class="play">▶</button><button id="nextTrack">›</button><button id="muteTrack">◖</button><input id="volume" type="range" min="0" max="1" step=".01" value=".48" aria-label="صدا"></div>
+      <div id="trackName" class="trackName">شبِ کتابخانه · قطعه‌ی بی‌کلام</div>
     </div>
+  </div>
+</section>
 
-    <!-- بنر اول صفحه -->
-    <header class="hero-banner">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>سکوت پرهیاهو</h1>
-            <p>غزلیات، مکاتبات و مطلوبات سینا عباسی</p>
-        </div>
-    </header>
+<section id="reading" class="readingSection section">
+  <div class="readingCard reveal"><span class="eyebrow">ARCHIVE / 04</span><h2>گوشه‌ی خوانش</h2><p>دکلمه‌ها، خوانش‌ها و اجراهایی که شعر را از کاغذ بیرون می‌آورند.</p><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button id="readingDemo" class="smallBtn">پخش نمونه</button></div>
+  <div class="micStage reveal"><div class="mic">◖</div></div>
+</section>
+<footer><div class="brand"><b>سکوت</b> <span>پرهیاهو</span></div><div>شاعر سیناعباسی · <a href="https://instagram.com/30na_abba30">Instagram</a> · <a href="https://t.me/Silence_in_chaos">Telegram</a> · <a href="https://ble.ir/Silence_in_chaos">Bale</a></div></footer>
+</main>
 
-    <!-- جستجوگر -->
-    <div class="search-section">
-        <input type="text" class="search-bar" id="searchBar" placeholder="جستجو در واژگان شعرها..." oninput="filterPoems()">
-    </div>
-
-    <!-- اسلایدشو ابیات منتخب -->
-    <section class="featured-verses-section">
-        <h2 class="featured-title">ابیات منتخب</h2>
-        <div class="verse-slide" id="verseSlide">«ای ماهی بیچاره که خوشحالی و سرمست\nآنچه بغلت کرده به تنگی نخ تور است»</div>
-        <div class="verse-controls">
-            <button class="verse-btn" onclick="prevVerse()">قبلی</button>
-            <button class="verse-btn" onclick="nextVerse()">بعدی</button>
-        </div>
-    </section>
-
-    <!-- فهرست اشعار -->
-    <main class="poems-container" id="poemsContainer">
-        <!-- شعر ۱ -->
-        <div class="poem-card" onclick="openBook('خودت بهتر خبر داری', `خودت بهتر خبر داری که با قلبم چه‌ ها کردی\nتو هرشب ذرّه‌ای از سینه‌ی من را جدا کردی\n\nهرآنچه دشمنان سنگدل با هم نمی‌کردند\nتو با دلداده ات، این شاعرت، این آشنا کردی!\n\nسپاه فاتح چشمت، تصاحب کرده قلبم را\nبدون جنگ و خونریزی، چه ساده کودتا کردی!\n\nسوا کردی مرا از بین صدها صید چشمانت\nچه شد حالا که من را در غم عشقت رها کردی ؟\n\nچرا حیرت؟ چرا تردید؟ چه شد ایمان چشمانت؟\nبرای عشق ورزیدن ، خودت من را صدا کردی\n\nطلب کردم ز تو عشقت ، تو نفرت را رسانیدی\nگمانم تو مضامین دعا را جا به جا کردی\n\nقسم خوردی که تنها، ″مرگ″ باشد موجب دوری\nپس از آنکه مرا کشتی ، به عهد خود وفا کردی!\n\nمن اینجا در #سکوتی_پرهیاهو سخت تنها‌ ام\nتو ای زیباترین ظالم ، به حقّم بد جفا کردی!\n\nنمی‌دانند آداب سخن با چون تو را گفتن\nبه‌جز‌ من دل به هرکه داده‌ای بی شک خطا کردی!\n\nنه اهل شاعری بودم ، نه مرد پرسه زن در شب\nتو من را با مفاعیلن فعولن آشنا کردی..!`)">
-            <h3>خودت بهتر خبر داری...</h3>
-            <p>خودت بهتر خبر داری که با قلبم چه‌ها کردی<br>تو هرشب ذرّه‌ای از سینه‌ی من را جدا کردی</p>
-        </div>
-
-        <!-- شعر ۲ -->
-        <div class="poem-card" onclick="openBook('مهمان دلم باش', `مهمان دلم باش ، دلم جای بدی نیست\nاین خانه به غیر از تو سرای احدی نیست\n\nهرلحظه به این ذوق که می آیی و هستی\nمی مانم و اندوه که عمرم ابدی نیست\n\nهرچند پر از زخم زمانه است ولی امن\nآرام بیا در دل من دیو و ددی نیست\n\nمن خسته و ویرانم و دل خسته تر از من\nمن ساحل متروکه ، مرا جزر و مدی نیست\n\nاین شهر بدون تو چه تاریک و چه باریک\nای دوست گمم ، راه تو را هم بلدی نیست\n\nصد شیهه کشد اسب زمان ، میگذرد دهر\nاز کاسه ی این عمر که دیگر عددی نیست\n\nاینجاست که در گوشه ای از دفتر شعرم\nجز مرگ از این شعر ندایی و ردی نیست\n\nبا خس خس این سینه برای تو نوشتم\nاین سینه به غیر از تو سرای احدی نیست`)">
-            <h3>مهمان دلم باش</h3>
-            <p>مهمان دلم باش ، دلم جای بدی نیست<br>این خانه به غیر از تو سرای احدی نیست</p>
-        </div>
-
-        <!-- شعر ۳ -->
-        <div class="poem-card" onclick="openBook('عقل متصدی امور', `بس کن! سخن از عشق نگو ، از تو به دور است!\nزخم دل من تازه و لب های تو شور است!\n\nدیگر دل من حاکم ویرانه‌ی تن نیست،\nعقل است که حالا متصدّی امور است!\n\nچشمان تو زیباست ولی سهم خودت باد!\nپای من دیوانه دگر بر لب گور است !\n\nهرنکته به جای خود و هرکار به وقت‌اش\nقبلا تو نماندی و کنون وقت عبور است !\n\nبین من و تو حرف جدیدی که نمانده!\nالباقی آن خاطره و درد مرور است...\n\nشخصیت خوب همه‌ی قصه تو باش و\nبر گردن من هرچه خطا، هرچه قصور است!\n\nدنیا چه عجیب است، همان نور دو چشمت؛\nدر چشم به هم بر زدنی ، نقطه‌ی کور است!\n\nای ماهی بیچاره که خوشحالی و سرمست\nآنچه بغلت کرده به تنگی، نخ تور است!\n\nاو که به گمان غلطت کل جهان است؛\nسخت است بفهمی که فقط تنگ بلور است!`)">
-            <h3>عقل متصدی امور</h3>
-            <p>بس کن! سخن از عشق نگو ، از تو به دور است!<br>زخم دل من تازه و لب های تو شور است!</p>
-        </div>
-
-        <!-- شعر ۴ -->
-        <div class="poem-card" onclick="openBook('موهای بهم ریخته‌ات', `بهمم ریخته موهای بهم ریخته‌ات\nزده سوزانده مرا ، عشق برانگیخته‌ات\n\nچشم چرخاندی و یک شهر همه مست شدند،\nاز نگاهِ به شرابِ سیه آمیخته‌ات!\n\nچیدن میوه‌‌ی بیرون زده را جرمی نیست!\nمثل سرخیِ لبِ از دهن آویخته‌ات!\n\nنامه‌ی عشق مرا خواندی و گفتی : ممنون!\nپاسخم را نده با حالت فرهیخته‌ات!`)">
-            <h3>موهای بهم ریخته‌ات</h3>
-            <p>بهمم ریخته موهای بهم ریخته‌ات<br>زده سوزانده مرا ، عشق برانگیخته‌ات</p>
-        </div>
-
-        <!-- شعر ۵ -->
-        <div class="poem-card" onclick="openBook('نگو که من نگفته‌ام', `«نگو که من نگفته‌ام ، تو بارها شنیده‌ای\nنه از لبم، که از نگاه عاشقم ندیده‌ای؟»\n\nدچار شرم واژه‌ام و اهل عشق بی‌صدا!\nکم از سکوت عاشقانه‌ی دلم چشیده‌ای؟\n\nمن اهل های‌و‌هوی‌ها نبوده‌ام و شاعرم!\nتو قافیه به قافیه، به شعر من تنیده‌ای\n\nچه اتهام بی‌خودی! من از تو دور بوده‌ام؟\nمیان هر تنفسی، تو در دلم تپیده‌ای!\n\nحضورِ بی‌قرار من ، سرابِ شب‌چراغِ من\nتو در خیال خام من به بوسه هم رسیده‌ای!`)">
-            <h3>نگو که من نگفته‌ام</h3>
-            <p>«نگو که من نگفته‌ام ، تو بارها شنیده‌ای<br>نه از لبم، که از نگاه عاشقم ندیده‌ای؟»</p>
-        </div>
-
-        <!-- شعر ۶ -->
-        <div class="poem-card" onclick="openBook('قهوه های قاجاری', `اسیرم و شده ام در غم تو زندانی\nتویی که ثانیه‌ای حال من نمی‌دانی\n\nپس از تو فاصله‌ای نیست بین من‌ تا مرگ\nهوای سینه شده پر غبار و طوفانی!\n\nبه شوق اشک شدن بغض در گلو شده است\nبهانه‌گیر تر از ابرهای بارانی...\n\nدو چشم قهوه‌ای‌ات قهوه های قاجاری\nعلاج قطعی قلب است: «چشم درمانی »\n\nبرای چیدن لب های سرخ تو زده لک\nبه روی شاخه دل سیب های لبنانی !`)">
-            <h3>قهوه های قاجاری</h3>
-            <p>اسیرم و شده ام در غم تو زندانی<br>تویی که ثانیه‌ای حال من نمی‌دانی</p>
-        </div>
-
-        <!-- شعر ۷ -->
-        <div class="poem-card" onclick="openBook('گوش جهان کر میکنم', `من برای عشق تو ، گوش جهان کر میکنم!\nمن هنوزم خانه را با تو معطّر میکنم!\n\nهرکه آغوش تو را از من بگیرد، دلبرا؛\nمن تمام هستی‌اش لبریز از شر میکنم!\n\nمثل یک پروانه ام، شمعی و می‌سوزانی‌ام\nاین رضایت‌نامه‌ ام! من عمر کمتر می‌کنم!\n\nهرچه می خواهی بخواه و هرچه میگویی بگو\nمن برایت قصه‌ی مجنون از بر می‌کنم`)">
-            <h3>گوش جهان کر میکنم</h3>
-            <p>من برای عشق تو ، گوش جهان کر میکنم!<br>من هنوزم خانه را با تو معطّر میکنم!</p>
-        </div>
-
-        <!-- شعر ۸ -->
-        <div class="poem-card" onclick="openBook('صعود به قله چشم', `به عمق قلب تو روزی ورود خواهم کرد!\nتمام اهل جهان را ، حسود خواهم کرد!\n\nو ای نگاه تو زیباتر از شب معراج\nبه اوج قله‌ی چشمت صعود خواهم کرد\n\nدلیل لکنت نبضم ، پیام‌آور عشق!\nتو را به خواب حتی، شهود خواهم کرد!\n\nدمیده‌اند به عشقت ، گِلِ سرشتم را\nبرابر گُلِ رویت ، سجود خواهم کرد`)">
-            <h3>صعود به قله چشم</h3>
-            <p>به عمق قلب تو روزی ورود خواهم کرد!<br>تمام اهل جهان را ، حسود خواهم کرد!</p>
-        </div>
-
-        <!-- شعر ۹ -->
-        <div class="poem-card" onclick="openBook('وکیل پایه یک', `گوشه‌ی قلبت برایم ، تخت حاضر می‌کنی؟\nکنج آغوش تنت را سهم زائر می‌کنی؟!\n\nبا تو ام ! ای آنکه هر شب در همین ثانیه‌ها\nدر سرم رزمایشی دشوار دایر می‌کنی!\n\nدر میان جزوه هایم جای قانون نام توست\nیک وکیل پایه یک را مست و شاعر می‌کنی!\n\nفاتح گیسوی پر پیچ و خمت تنها منم!\nکوه نوری و مرا مانند نادر می‌کنی!`)">
-            <h3>وکیل پایه یک</h3>
-            <p>گوشه‌ی قلبت برایم ، تخت حاضر می‌کنی؟<br>کنج آغوش تنت را سهم زائر می‌کنی؟!</p>
-        </div>
-    </main>
-
-    <!-- دکمه نمایش بیشتر -->
-    <div class="load-more-container" id="loadMoreContainer">
-        <button class="load-more-btn" onclick="loadMorePoems()">نمایش بقیه اشعار (10 شعر دیگر)</button>
-    </div>
-
-    <!-- مودال نمایش کتاب قدیمی -->
-    <div class="book-modal" id="bookModal" onclick="closeBook(event)">
-        <div class="book-content" id="bookContentContainer">
-            <span class="book-close" onclick="closeBookDirect()">×</span>
-            <h2 class="book-poem-title" id="modalTitle">عنوان شعر</h2>
-            <div class="book-poem-body" id="modalBody">متن کامل شعر...</div>
-            <div class="book-actions">
-                <button class="action-btn" onclick="copyPoemText()">کپی متن شعر</button>
-                <button class="action-btn" onclick="sharePoem()">اشتراک‌گذاری</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // هاله نور موس
-        const cursorLight = document.getElementById('cursorLight');
-        document.addEventListener('mousemove', (e) => {
-            cursorLight.style.left = e.clientX + 'px';
-            cursorLight.style.top = e.clientY + 'px';
-        });
-
-        // گرامافون و صوت
-        const audio = document.getElementById('bgAudio');
-        const widget = document.getElementById('gramophoneWidget');
-        const statusText = document.getElementById('audioStatus');
-        let isPlaying = false;
-
-        function toggleAudio() {
-            if (isPlaying) {
-                audio.pause();
-                widget.classList.remove('playing');
-                statusText.innerText = 'نوای گرامافون (متوقف)';
-            } else {
-                audio.play().catch(e => console.log("Audio play blocked"));
-                widget.classList.add('playing');
-                statusText.innerText = 'در حال پخش نوا...';
-            }
-            isPlaying = !isPlaying;
-        }
-
-        // اسلایدشو ابیات منتخب (۳۰ بیت دقیق)
-        const verses = [
-            "«ای ماهی بیچاره که خوشحالی و سرمست\nآنچه بغلت کرده به تنگی نخ تور است»",
-            "او که به گمان غلطت کل جهان است\nسخت است بفهمی که فقط تنگ بلور است",
-            "«خودت بهتر خبر داری که با قلبم چه‌ها کردی\nتو هر شب ذره‌ای از سینه‌ی من را جدا کردی»",
-            "در میان جزوه هایم جای قانون نام توست\nیک وکیل پایه یک را مست و شاعر میکنی",
-            "تو من دریا گریز در فرار از آب را\nکشتی پهلو گرفته در بنادر می‌کنی",
-            "من شدم جام شرابت تو مسلمان گشته ای\nتوبه کردی یا که از عشقم پشیمان گشته ای",
-            "«سپاه فاتح چشمت تصاحب کرده قلبم را\nبدون جنگ و خونریزی چه ساده کودتا کردی!»",
-            "«در میان جزوه هایم جای قانون نام توست»",
-            "«تو منِ دریا گریزِ در فرار از آب را،\nکشتی پهلو گرفته در بنادر می‌کنی!»",
-            "«قسم خوردی که تنها مرگ باشد موجب dوری\nپس از آنکه مرا کشتی، به عهد خود وفا کردی!»",
-            "«تا سحر صد خوشه بوسه گر بچینم از لبت،\nباز هم طبق فتاوی دلم، اسراف نیست!»",
-            "«زلف خیس‌ات بعد باران، خواستنی‌تر می‌شود\nتاکِ مشکین خشک کردن، جان من، اجحاف نیست؟»",
-            "«شب‌ست و چای و چاوشی و چشم‌خیس و عاشقی\nبساط یک غزل پر از غم مرور، جور شد!»",
-            "«محضر قاضی بیا، دل‌دزدی‌ات اقرار کن!\nمن تقاضای اَشدّ عشقِ سارق می‌کنم!»",
-            "«تو ز ما غافل و از خویش گریزان تا کی؟!\nتو دلت سنگ و دلم شیشه‌ی لرزان تا کی؟!»",
-            "«ناز چشمان تو را بی‌نرخ، بودم مشتری\nچشم من روشن! ببین حالا چه ارزان گشته‌ای!»",
-            "«من برای عشق تو، گوش جهان کر می‌کنم!\nمن هنوزم خانه را با تو معطّر میکنم!»",
-            "«هرچه غم باشد خیالی نیست بر دوشم ولی\nرنجشی باشد تو را، من بی‌گمان دق می‌کنم»",
-            "«چشم چرخاندی و یک شهر همه مست شدند\nاز نگاهِ به شرابِ سیه آمیخته‌ات!»",
-            "و نیش زد به تن زخمی ام همانی که\nبرای غصه‌ی تب های او ترک‌خوردم",
-            "بس کن سخن از عشق نگو از تو به دور است\nزخم تن من تازه و لب های تو شور است",
-            "«در ولا الضّالین حمدم خدشه ای وارد نبود\nآخرش با عشق، ما را رند و کافر می‌کنی!»",
-            "«دلیل لکنت نبضم، پیام‌آور عشق!\nتو را به خواب حتی، شهود خواهم کرد!»",
-            "«یکی نبود و یکی بود، قصه‌ی من نیست؛\nتمام گنبد گیتی، کبود خواهم کرد!»",
-            "«برای راندن اغیار، هر شب این موقع\nدو بیت شعر سروده و دود خواهم کرد!»",
-            "«و ای نگاه تو زیباتر از شب معراج\nبه اوج قله‌ی چشمت صعود خواهم کرد»",
-            "«هم تراز قد رعنای تو کوه قاف نیست!\nماه را تشبیه کردن بر رخت، انصاف نیست!»",
-            "«قلب من موقوفه‌ی خوبی برای عشق توست!\nمال مخروبه، اگرچه، زمره‌ی اوقاف نیست!»",
-            "«در میان واژگان بی شمار این زبان\nهیچ یک قافیه‌ای بر عین و شین و قاف نیست!»"
-        ];
-        let currentVerseIdx = 0;
-
-        function updateVerse() {
-            document.getElementById('verseSlide').innerText = verses[currentVerseIdx];
-        }
-        function nextVerse() {
-            currentVerseIdx = (currentVerseIdx + 1) % verses.length;
-            updateVerse();
-        }
-        function prevVerse() {
-            currentVerseIdx = (currentVerseIdx - 1 + verses.length) % verses.length;
-            updateVerse();
-        }
-        setInterval(nextVerse, 6000); // اتوماتیک هر ۶ ثانیه
-
-        // باز کردن کتاب قدیمی (مودیال)
-        function openBook(title, body) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').innerText = body;
-            document.getElementById('bookModal').classList.add('active');
-        }
-        function closeBookDirect() {
-            document.getElementById('bookModal').classList.remove('active');
-        }
-        function closeBook(e) {
-            if(e.target.id === 'bookModal') {
-                closeBookDirect();
-            }
-        }
-
-        // کپی متن شعر
-        function copyPoemText() {
-            const text = document.getElementById('modalBody').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('متن شعر با موفقیت کپی شد!');
-            });
-        }
-
-        // اشتراک‌گذاری شعر
-        function sharePoem() {
-            const title = document.getElementById('modalTitle').innerText;
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    text: document.getElementById('modalBody').innerText,
-                    url: window.location.href
-                }).catch(console.error);
-            } else {
-                copyPoemText();
-            }
-        }
-
-        // لود بقیه شعرها با کلیک روی دکمه
-        function loadMorePoems() {
-            const container = document.getElementById('poemsContainer');
-            
-            // اضافه‌کردن بقیه شعرها به لیست
-            const remainingPoems = [
-                {title: 'ما چله‌نشین شب تنهایی', body: 'ما چله‌‌نشین شب تنهایی خویشیم!\nما معتکف کعبه‌ی یکتایی خویشیم!\n\nدور از همه‌ی همهمه‌ها ، گوشه‌ی تنگی\nشب تا به سحر شاعر لالایی خویشیم!'},
-                {title: 'مرد بیمار', body: 'در ذهن خود مشغول رزم و جنگ و پیکارم\nدر روز می‌خندم ولی شب گریه می‌بارم\n\nجمع تناقض های حل‌ناگشته‌ام ، عمری‌ست\nمجموعه‌ای از رنج‌‌های خُردِ بسیارم!'},
-                {title: 'انار سرخ کاشانی', body: 'سرم لبریز از فکرت و شاید گاه می‌ریزی\nکنارم نیستی اما به افکارم گلاویزی\n\nتو را هرثانیه، هر دم، چه‌ بی‌صبرانه دلتنگم\nبیا نزدیک چشمانم، نگاهم کن، بگو چیزی!'},
-                {title: 'گوهری نایاب', body: 'برای من همیشه گوهری نایاب هستی تو\nشبیه بهترین رویای من در خواب هستی تو\n\nچنان شب مشکی است آشفته گیسوی پریشانت\nدر آن بین می‌درخشد صورتت، مهتاب هستی تو'},
-                {title: 'روسری آبی', body: 'روسری‌‌ات آبی و ماتیک قرمز بر لبت\nحس من از دیدن تو مثل دربی دیدن‌است!\n\nباختم دل را همان اول به ترکیب تن‌ات؛\nگل که زیبا می‌شود دیگر زمان چیدن است!'},
-                {title: 'کوه قاف', body: 'هم تراز قد رعنای تو کوه قاف نیست!\nماه را تشبیه کردن بر رخت، انصاف نیست!\n\nگل کجا و ناز آغوشِ پر از مهرت کجا ؟!\nهیچ برگِ غنچه ای، این‌قدر نرم و صاف نیست!'},
-                {title: 'جام شرابت', body: 'من شدم جام شرابت، تو مسلمان گشته‌ای؟\nتوبه کردی یا که از عشقم پشیمان گشته‌ای؟\n\nشاعری کردم برایت ، شعر مطلوبت نبود!\nبا رقیبان می‌نشینی و غزل‌خوان گشته‌ای؟!'},
-                {title: 'چشم نمناک', body: 'چه روزها که چشم‌ من، برای تو نمور شد!\nو خورد چشم تو به من، ولی دوباره کور شد!\n\nو هرچه زخم های من ، عمیق و سینه‌سوز تر...\nتو واژه های بر لبت ، کنایه دار و شور شد!'},
-                {title: 'تمام عمر گمان کرده بودم', body: 'تمام عمر گمان کرده بوده ام بردم!\nاز اینکه جان و دلم را به دوست بسپردم!\n\nبه خاک های زیادی جوانه بخشیدم\nخزان رسید و خودم چه غریب پژمردم!'},
-                {title: 'فرمانروایی', body: 'در سرزمین قلب من، فرمانروایی می‌کنی\nتو سلطنت نه جان من ، بر من خدایی می‌کنی\n\nدر چنگ توست سینه‌ام، سوزاندنش دیگر چرا؟\nبا ناز چشم های خود ، کشورگشایی می‌کنی!'}
-            ];
-
-            remainingPoems.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'poem-card';
-                card.onclick = () => openBook(p.title, p.body);
-                card.innerHTML = `<h3>${p.title}</h3><p>${p.body.split('\n')[0]}<br>${p.body.split('\n')[1] || ''}</p>`;
-                container.appendChild(card);
-            });
-
-            document.getElementById('loadMoreContainer').style.display = 'none';
-        }
-
-        // فیلتر شعرها با جستجو
-        function filterPoems() {
-            const query = document.getElementById('searchBar').value.toLowerCase();
-            const cards = document.querySelectorAll('.poem-card');
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                if(text.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+<div id="reader" class="reader"><button id="closeReader" class="close">×</button><article class="book"><div class="bookHeader"><span>شاعر سیناعباسی</span><span id="readerIndex"></span></div><div class="bookBody"><span class="eyebrow" id="readerEyebrow">غزل</span><h2 id="readerTitle"></h2><div id="readerText"></div></div><div class="bookFooter"><button id="readerPrev">غزل پیشین</button><button id="readerNext">غزل بعدی</button></div></article></div>
+<div id="searchPanel" class="searchPanel"><button id="closeSearch" class="closeSearch">×</button><input id="searchInput" placeholder="میان غزل‌ها جست‌وجو کن…"><div id="searchResults"></div></div>
+<script src="poems.js"></script><script src="script.js"></script>
+</body></html>
