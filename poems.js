@@ -220,3 +220,5 @@ const poems = [
     "fullEn": ""
   }
 ];
+
+window.POEMS = poems;
