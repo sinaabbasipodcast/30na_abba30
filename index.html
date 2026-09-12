@@ -1,58 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دفتر شعر سینا عباسی</title>
-    <!-- استایل‌ها -->
-    <link rel="stylesheet" href="style.css">
-    <!-- فونت وزیرمتن برای زیبایی متن‌های فارسی -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>سکوت پرهیاهو — اشعار سیناعباسی</title>
+<meta name="description" content="سکوت پرهیاهو؛ شعرها، ابیات منتخب و خوانش‌های سیناعباسی.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header class="site-header">
-        <div class="header-content">
-            <h1>دفتر شعر سینا عباسی</h1>
-            <p>نجوای واژه‌ها و طنین احساس در اوراق خیال</p>
-        </div>
-    </header>
-
-    <main class="main-container">
-        <!-- بخش جستجو و فیلترها -->
-        <section class="controls-section">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="جستجو در واژه‌ها، بیت‌ها یا عنوان غزل...">
-            </div>
-        </section>
-
-        <!-- لیست غزل‌ها -->
-        <section class="poems-grid" id="poemsGrid">
-            <!-- کارت‌های غزل به صورت دینامیک از فایل poems.js لود می‌شوند -->
-        </section>
-
-        <!-- دکمه مشاهده بیشتر -->
-        <div class="load-more-container">
-            <button id="loadMoreBtn" class="load-more-btn">نمایش غزل‌های بیشتر</button>
-        </div>
-    </main>
-
-    <!-- مودال (پنجره بازشو) برای خواندن کامل غزل -->
-    <div id="poemModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <div class="modal-body" id="modalBody">
-                <!-- محتوای غزل انتخاب شده اینجا قرار می‌گیرد -->
-            </div>
-        </div>
+<div class="grain"></div><div id="cursorLight"></div><div id="ambient"></div>
+<header class="topbar">
+  <div class="brand"><b>سکوت</b> <span>پرهیاهو</span></div>
+  <nav><a href="#poems">غزل‌ها</a><a href="#verses">بهترین ابیات</a><a href="#reading">گوشه‌ی خوانش</a><a href="#sound">زخم شبانه</a></nav>
+  <button id="searchBtn" class="iconBtn" aria-label="جست‌وجو">⌕</button>
+</header>
+<main>
+<section class="hero">
+  <img src="assets/hero.jpg" alt="سینا عباسی" class="heroImg">
+  <div class="heroShade"></div>
+  <div class="heroText reveal">
+    <div class="eyebrow">مکتوبات و غزلیات سیناعباسی</div>
+    <h1><span>سکوت</span> <em>پرهیاهو</em></h1>
+    <div class="heroQuote">مهمان دلم باش.</div>
+    <p>دلم جای بدی نیست.</p>
+    <div class="socials">
+      <a href="https://instagram.com/30na_abba30" target="_blank" aria-label="Instagram">◎</a>
+      <a href="https://t.me/Silence_in_chaos" target="_blank" aria-label="Telegram">➤</a>
+      <a href="https://ble.ir/Silence_in_chaos" target="_blank" aria-label="Bale">ب</a>
     </div>
+  </div>
+  <div class="heroDate"><span id="heroTime">—</span><span id="heroDate">—</span></div>
+  <a class="scrollCue" href="#poems">↓</a>
+</section>
 
-    <footer class="site-footer">
-        <p>تمامی حقوق محفوظ است | ساخته شده با عشق و واژه</p>
-    </footer>
+<section id="poems" class="poemArchive section">
+  <div class="sectionHead reveal"><div><span class="eyebrow">ARCHIVE / 01</span><h2>غزل‌ها</h2></div><span class="sectionMark">دفتر شعر</span></div>
+  <div id="poemGrid" class="poemGrid"></div>
+  <button id="morePoems" class="moreBtn">مشاهده‌ی بیشتر <span>↓</span></button>
+</section>
 
-    <!-- اسکریپت‌ها -->
-    <script src="poems.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+<section id="verses" class="selectedSection section">
+  <div class="sectionHead reveal"><div><span class="eyebrow">ARCHIVE / 02</span><h2>ابیات منتخب</h2></div></div>
+  <div class="verseStage reveal">
+    <button id="prevVerse" class="paperNav prev" aria-label="بیت قبلی">‹</button>
+    <article id="versePaper" class="versePaper">
+      <div class="paperCorner">سکوت پرهیاهو</div><div class="paperRule"></div>
+      <blockquote id="verseText"></blockquote>
+      <div class="paperMeta"><span id="verseMeta">غزل ۱</span><button id="verseOpen">خواندن غزل ↗</button></div>
+    </article>
+    <button id="nextVerse" class="paperNav next" aria-label="بیت بعدی">›</button>
+  </div>
+</section>
+
+<section class="windowSection section">
+  <div class="windowScene reveal">
+    <div class="windowFrame"><div class="rain" id="rain"></div><div class="windowGlow"></div><div class="outside"><span class="moon"></span><span class="sun"></span><span class="city"></span></div></div>
+    <div class="windowCaption"><span>حاشیه‌ی پنجره</span><b id="weatherText">باران</b></div>
+  </div>
+  <div class="noteBoard reveal"><span>از حاشیه‌های این اتاق</span><p id="thought">بنویسید بچه‌ها! کم‌رنگ‌ترین جوهرها از قوی‌ترین حافظه‌ها ماندگارترند.</p></div>
+</section>
+
+<section id="sound" class="soundSection section">
+  <div class="soundCopy reveal"><span class="eyebrow">ARCHIVE / 03</span><h2>زخم شبانه</h2><p>اتاق را آرام‌تر کن.</p></div>
+  <div class="gramophoneWrap reveal">
+    <div class="gramophone" id="gramophone"><div class="horn"></div><div class="base"></div><div class="turntable"><div class="record"><span>زخم<br>شبانه</span></div></div><div class="needle"></div><div class="knob"></div>
+      <div class="playerControls"><button id="prevTrack">‹</button><button id="playTrack" class="play">▶</button><button id="nextTrack">›</button><button id="muteTrack">◖</button><input id="volume" type="range" min="0" max="1" step=".01" value=".48" aria-label="صدا"></div>
+      <div id="trackName" class="trackName">شبِ کتابخانه · قطعه‌ی بی‌کلام</div>
+    </div>
+  </div>
+</section>
+
+<section id="reading" class="readingSection section">
+  <div class="readingCard reveal"><span class="eyebrow">ARCHIVE / 04</span><h2>گوشه‌ی خوانش</h2><p>دکلمه‌ها، خوانش‌ها و اجراهایی که شعر را از کاغذ بیرون می‌آورند.</p><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button id="readingDemo" class="smallBtn">پخش نمونه</button></div>
+  <div class="micStage reveal"><div class="mic">◖</div></div>
+</section>
+<footer><div class="brand"><b>سکوت</b> <span>پرهیاهو</span></div><div>شاعر سیناعباسی · <a href="https://instagram.com/30na_abba30">Instagram</a> · <a href="https://t.me/Silence_in_chaos">Telegram</a> · <a href="https://ble.ir/Silence_in_chaos">Bale</a></div></footer>
+</main>
+
+<div id="reader" class="reader"><button id="closeReader" class="close">×</button><article class="book"><div class="bookHeader"><span>شاعر سیناعباسی</span><span id="readerIndex"></span></div><div class="bookBody"><span class="eyebrow" id="readerEyebrow">غزل</span><h2 id="readerTitle"></h2><div id="readerText"></div></div><div class="bookFooter"><button id="readerPrev">غزل پیشین</button><button id="readerNext">غزل بعدی</button></div></article></div>
+<div id="searchPanel" class="searchPanel"><button id="closeSearch" class="closeSearch">×</button><input id="searchInput" placeholder="میان غزل‌ها جست‌وجو کن…"><div id="searchResults"></div></div>
+<script src="poems.js"></script><script src="script.js"></script>
+</body></html>
