@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سکوت پرهیاهو | سینا عباسی</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Vazirmatn Font -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         body {
@@ -15,12 +13,10 @@
             color: #e4dcd3;
             overflow-x: hidden;
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #12100e; }
         ::-webkit-scrollbar-thumb { background: #3b3026; border-radius: 3px; }
         
-        /* Mouse Spotlight Effect */
         #spotlight {
             pointer-events: none;
             position: fixed;
@@ -29,7 +25,6 @@
             background: radial-gradient(circle 250px at var(--x, 50%) var(--y, 50%), rgba(212, 175, 55, 0.05) 0%, rgba(18, 16, 14, 0.5) 70%, transparent 100%);
             transition: background 0.1s ease-out;
         }
-        /* Paper texture & Card styling */
         .paper-card {
             background-color: #f7f2ea;
             color: #2b241d;
@@ -53,15 +48,12 @@
 </head>
 <body class="bg-[#12100e] text-[#e4dcd3] relative selection:bg-[#d4af37] selection:text-[#12100e]">
 
-    <!-- Mouse Spotlight Overlay -->
     <div id="spotlight"></div>
 
-    <!-- Ambient Audio -->
     <audio id="ambientMusic" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3?filename=quiet-reflection-11073.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Header Environment Bar -->
     <header class="fixed top-0 left-0 w-full z-40 bg-[#12100e]/80 backdrop-blur-md border-b border-[#3b3026]/40 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-6">
             <div id="roomClock" class="text-xs tracking-widest text-[#a89884] font-mono">00:00:00</div>
@@ -83,7 +75,6 @@
         </div>
     </header>
 
-    <!-- Main Hero Section: Original Image Banner & Headings -->
     <section class="min-h-screen pt-28 pb-16 px-6 md:px-16 flex items-center relative border-b border-[#3b3026]/30">
         <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -118,17 +109,15 @@
                 </div>
             </div>
 
-            <!-- Original Photo Banner Area -->
             <div class="lg:col-span-5 relative flex justify-center">
                 <div class="relative w-full max-w-md aspect-[4/5] rounded-xl overflow-hidden border border-[#3b3026] shadow-2xl bg-[#1a1714]">
-                    <img src="your-photo.jpg" alt="سینا عباسی" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#1a1714]\''><div class=\'w-24 h-24 rounded-xl border border-[#d4af37]/40 flex items-center justify-center mb-4 bg-[#12100e]\''><span class=\'text-3xl gold-accent font-serif\'>س</span></div><h3 class=\'text-xl font-bold tracking-widest text-[#f7f2ea]\'>سینا عباسی</h3><p class=\'text-xs text-[#8a7a68] tracking-widest mt-2\'>Sina Abbasi • شاعر</p></div>'">
+                    <img src="your-photo.jpg" alt="سینا عباسی" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class='absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#1a1714]''><div class='w-24 h-24 rounded-xl border border-[#d4af37]/40 flex items-center justify-center mb-4 bg-[#12100e]''><span class='text-3xl gold-accent font-serif'>س</span></div><h3 class='text-xl font-bold tracking-widest text-[#f7f2ea]'>سینا عباسی</h3><p class='text-xs text-[#8a7a68] tracking-widest mt-2'>Sina Abbasi • شاعر</p></div>'">
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Selected Verses Slider -->
     <section id="selectedVerses" class="py-24 px-6 md:px-16 max-w-5xl mx-auto">
         <div class="mb-12 border-b border-[#3b3026] pb-4 flex justify-between items-end">
             <div>
@@ -149,7 +138,6 @@
         </div>
     </section>
 
-    <!-- Recitations Section (بخش دکلمه‌ها) -->
     <section id="recitations" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#3b3026]">
         <div class="mb-12">
             <span class="text-xs uppercase tracking-widest gold-accent">آوا و نوا</span>
@@ -181,7 +169,6 @@
         </div>
     </section>
 
-    <!-- Poetry Archive Index (گنجینه اشعار با باکس‌های مربعی کاغذی) -->
     <section id="archive" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-[#3b3026]">
         <div class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
@@ -196,7 +183,6 @@
         <div id="poemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-16 px-6 md:px-16 border-t border-[#3b3026] bg-[#0d0b09] text-center space-y-6">
         <h3 class="text-xl font-bold text-[#f7f2ea]">سکوت پرهیاهو</h3>
         <p class="text-xs text-[#8a7a68] tracking-widest">سینا عباسی • Sina Abbasi</p>
@@ -208,7 +194,6 @@
         <div class="pt-8 text-[11px] text-[#6b5c4d]">تمامی حقوق محفوظ است. دنیای شخصی ادبی سینا عباسی.</div>
     </footer>
 
-    <!-- Poem Reading Modal -->
     <div id="poemModal" class="fixed inset-0 z-50 bg-[#12100e]/90 backdrop-blur-md hidden items-center justify-center p-4 md:p-8">
         <div class="paper-card w-full max-w-3xl max-h-[90vh] rounded-xl overflow-y-auto p-8 md:p-12 relative shadow-2xl">
             <button id="closeModal" class="absolute top-6 left-6 text-[#2b241d] hover:text-[#d4af37] font-bold text-sm cursor-pointer">✕ بستن</button>
@@ -216,14 +201,13 @@
         </div>
     </div>
 
-    <!-- Application JavaScript -->
     <script>
         const poemsData = [
-            { id: 1, title: "نگو که من نگفته‌ام", content: `نگو که من نگفته‌ام ، تو بارها شنیده‌ای\nنه از لبم، که از نگاه عاشقم ندیده‌ای؟\n\nدچار شرم واژه‌ام و اهل عشق بی‌صدا!\nکم از سکوت عاشقاته‌ی دلم چشیده‌ای؟\n\nمن اهل های‌و‌هوی‌ها نبوده‌ام و شاعرم!\nتو قافیه به قافیه، به شعر من تنیده‌ای\n\nچه اتهام بی‌خودی! من از تو دور بوده‌ام؟\nمیان هر تنفسی، تو در دلم تپیده‌ای!\n\nحضورِ بی‌قرار من ، سرابِ شب‌چراغِ من\nتو در خیال خام من به بوسه هم رسیده‌ای!\n\nتو دام پهن کرده‌ای، تو صید کرده‌ای مرا!\nچرا ز طعمه‌ی خودت ، شکارچی، رمیده‌ای؟\n\nدرختی‌ام که رو به روز های سرد می‌رود\nو برگ سبز آخر مرا تویی که چیده‌ای!\n\nهزار بار سوختم و باز غرق شعله‌‌ام!\nتو توی کل زندگی چنین غمی کشیده‌ای؟\n\nشب است و شمع جان من، دوباره آب می‌شود\nدوباره اشک گشته و به دفترم چکیده‌ای!` },
+            { id: 1, title: "نگو که من نگفته‌ام", content: `نگو که من نگفته‌ام ، تو بارها شنیده‌ای\nنه از لبم، که از نگاه عاشقم ندیده‌ای؟\n\nدچار شرم واژه‌ام و اهل عشق بی‌صدا!\nکم از سکوت عاشقاته‌ی دلم چشیده‌ای؟\n\nمن اهل های‌و‌هوی‌ها نبوده‌ام و شاعرم!\nتو قافیه به قافیه، به شعر من تنیده‌ای\n\nچه اتهام بی‌خودی! من از تو دور بوده‌ام؟\nمیان هر تنفسی، تو در دلم تپیده‌ای!\n\nحضورِ بی‌قرار من ، سرابِ شب‌چراغِ من\nتو در خیال خام من به بوسه هم رسیده‌ای!\n\nتو دام پهن کرده‌ای، تو صید کرده‌ای مرا!\nچرا ز طعمه‌ی خودت ، شکارچی، رمیده‌ای؟\n\nدرختی‌ام که رو به روز های سرد می‌رود\nو برگ سبز آخر مرا تویی که چیده‌ای!\n\nهزار بار سوختم و باز غرق شعله‌‌ام!\nتو توی کل زندگی چنین غمی کشیده‌ای?\n\nشب است و شمع جان من، دوباره آب می‌شود\nدوباره اشک گشته و به دفترم چکیده‌ای!` },
             { id: 2, title: "مهمان دلم", content: `مهمان دلم شو که ببینی پرِ خون است!\nبعد از تو تمام غزل‌م وصف جنون است!\n\nهرچه دل من ساده و صاف است و صمیمی\nچشمان سیاه تو پر از مکر و فسون است!\n\nشمشیر کشیده‌ست نگاهت به دل من\nفرجام دل پاره‌ی من، کُن‌فَیَکون است!\n\nدر جنگ منِ بی‌سپرِ بی سر و سامان\nآخر چه نیازی به سلاح و به قشون است?\n\nتو زلزله‌ای سخت مهیبی و منم بم!\nدر هم بشکن هرچه مرا طاق و ستون است!\n\nسخت است، غزل گفتنِ از صورت ماه‌ت،\nزیبایی بی حد تو از وزن برون است!` },
             { id: 3, title: "اسیرم", content: `اسیرم و شده ام در غم تو زندانی\nتویی که ثانیه‌ای حال من نمی‌دانی\n\nپس از تو فاصله‌ای نیست بین من‌ تا مرگ\nهوای سینه شده پر غبار و طوفانی!\n\nبه شوق اشک شدن بغض در گلو شده است\nبهانه‌گیر تر از ابرهای بارانی...\n\nدو چشم قهوه‌ای‌ات دو قهوه های قاجاری\nعلاج قطعی قلب است: «چشم درمانی»\n\nبرای چیدن لب های سرخ تو زده لک\nبه روی شاخه دل سیب های لبنانی!\n\nپس از تو یکسره من حال دم به دم دارم\nبگو به من که تو هم مثل من پریشانی!\n\nبخوان ز چشم تَرَم جمله‌ی فروخورده\nبخوان ز لکنت شعرم؛ تو راز پنهانی ...\n\nاگر که شرم و حیا مانع بیانت شد\nمسلطم به الفبای سخت لب‌خوانی!` },
             { id: 4, title: "به عمق قلب تو", content: `به عمق قلب تو روزی ورود خواهم کرد!\nتمام اهل جهان را، حسود خواهم کرد!\n\nو ای نگاه تو زیباتر از شب معراج\nبه اوج قله‌ی چشمت صعود خواهم کرد\n\nدلیل لکنت نبضم، پیام‌آور عشق!\nتو را به خواب حتی، شهود خواهم کرد!\n\nدمیده‌اند به عشقت، گِلِ سرشتم را\nبرابر گُلِ رویت، سجود خواهم کرد\n\nو مزه مزه کن اسم مرا به زیر لبت\nقسم به خنده‌ی نازت، شنود خواهم کرد` },
-            { id: 5, title: "گوشه‌ی قلبت", content: `گوشه‌ی قلبت برایم، تخت حاضر می‌کنی؟\nکنج آغوش تنت را سهم زائر می‌کنی؟\n\nبا تو ام! ای آنکه هر شب در همین ثانیه‌ها\nدر سرم رزمایشی دشوار دایر می‌کنی!\n\nدر میان جزوه هایم جای قانون نام توست\nیک وکیل پایه یک را مست و شاعر می‌کنی!\n\nفاتح گیسوی پر پیچ و خمت تنها منم!\nکوه نوری و مرا مانند نادر می‌کنی!` },
+            { id: 5, title: "گوشه‌ی قلبت", content: `گوشه‌ی قلبت برایم، تخت حاضر می‌کنی?\nکنج آغوش تنت را سهم زائر می‌کنی?\n\nبا تو ام! ای آنکه هر شب در همین ثانیه‌ها\nدر سرم رزمایشی دشوار دایر می‌کنی!\n\nدر میان جزوه هایم جای قانون نام توست\nیک وکیل پایه یک را مست و شاعر می‌کنی!\n\nفاتح گیسوی پر پیچ و خمت تنها منم!\nکوه نوری و مرا مانند نادر می‌کنی!` },
             { id: 6, title: "خبرت هست؟", content: `خبرت هست که تو ماه شب تار منی؟\nقبله‌ی قلب من و سوژه‌ی اشعار منی؟\n\nتو امیدم وسط مشغله هایم هستی\nدور هم باشی اگر، مرکز افکار منی\n\nتو تبسم کن و گور پدر یک دنیا\nحسبی‌العشق! عزیزم! تو کس و کار منی!` },
             { id: 7, title: "قطر کمر", content: `کم است وسعت قُطــر کرانـه‌ے کمــرت\nچگونه من نگذارم دوباره سر‌به‌سرت؟!\n\nشبانــــه‌ مــی‌روم از دور خانــه‌ات بـالا\nسرک کشیده و دزدیده می‌کنم نظرت!\n\nمحـل ندادے اگـرچــه به در‌ زدن‌هایم\nهنوز کاغذ شعرے نشسته پشت درت` },
             { id: 8, title: "بس کن!", content: `بس کن! سخن از عشق نگو، از تو به دور است!\nزخم دل من تازه و لب های تو شور است!\n\nدیگر دل من حاکم ویرانه‌ی تن نیست\nعقل است که حالا متصدّی امور است!\n\nچشمان تو زیباست ولی سهم خودت باد\nپای من دیوانه دگر بر لب گور است!` },
@@ -283,7 +267,7 @@
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
             spotlight.style.setProperty('--x', `${x}%`);
-            spot spotlight.style.setProperty('--y', `${y}%`);
+            spotlight.style.setProperty('--y', `${y}%`);
         });
 
         function updateClock() {
@@ -347,7 +331,7 @@
             const filtered = poemsData.filter(p => p.title.includes(filter) || p.content.includes(filter));
 
             filtered.forEach((poem, index) => {
-                const firstTwoLines = poem.content.split('\n').slice(0, 2).join('\n');
+                const firstTwoLines = poem.content.split('\n')[0] + '\n' + (poem.content.split('\n')[1] || '');
                 const card = document.createElement('div');
                 card.className = 'paper-card p-6 rounded-lg cursor-pointer flex flex-col justify-between relative fade-in';
                 card.style.animationDelay = `${(index % 8) * 0.05}s`;
@@ -384,7 +368,7 @@
                     <span class="text-xs font-mono text-[#8a7a68]">غزل شماره ${poem.id}</span>
                 </div>
                 <div class="text-base md:text-lg leading-loose whitespace-pre-line text-center py-4 font-medium text-[#2b241d]">
-                    ${poem.content}
+                    ${poem.content.replace(/\\n/g, '\n')}
                 </div>
                 <div class="pt-6 border-t border-[#d4c5b2]/30 flex justify-between items-center text-xs text-[#8a7a68]">
                     <span>سکوت پرهیاهو</span>
